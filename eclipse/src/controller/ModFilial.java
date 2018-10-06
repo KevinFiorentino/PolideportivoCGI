@@ -2,13 +2,15 @@ package controller;
 
 import java.util.Scanner;
 
+import dao.FilialDao;
+
 public class ModFilial {
 
 	public static void main(String[] args) {
 		
 		int id = 0;
-		int hasta = 0;
-		int desde = 0;
+		String hasta = "";
+		String desde = "";
 		int mantenimiento = 0;
 		 
 		try(Scanner stdin = new Scanner(System.in)) {
@@ -18,21 +20,21 @@ public class ModFilial {
 	        int i = 0;
 	        for (String a : arrOfStr) {
 	        	if(i == 1) { id = Integer.parseInt(a); }
-	        	if(i == 5) { hasta = Integer.parseInt(a); }
-	        	if(i == 3) { desde = Integer.parseInt(a); }
+	        	if(i == 5) { hasta = a; }
+	        	if(i == 3) { desde = a; }
 	        	if(i == 7) { mantenimiento = Integer.parseInt(a); }
 	            i++;
 	        }
 		}
+		
+		FilialDao fd = new FilialDao();
 
-		String headers = "Content-Type: text/html\n\n";
-		System.out.println(headers);
-		System.out.println("<html>");
-		System.out.println("ID:" + id);
-		System.out.println(" Desde:" + desde + ":00");
-		System.out.println(" Hasta:" + hasta + ":00");
-		System.out.println(" Mantenimiento:" + mantenimiento);
-		System.out.println("</html>");
+		System.out.println("Content-Type: text/html\n\n");
+
+		fd.modFilial(id, desde+":00", hasta+":00", mantenimiento);
+		
+		System.out.println("<meta http-equiv=Refresh content=\"0.2 ; url=/PolideportivoCGI/Bienvenido.html\">");
+
 
 	}
 

@@ -15,6 +15,7 @@ public class FilialDao {
 		this.ds = new DataSource();
 	}
 	
+	//Funcion para traer todas las Filiales
 	public List<Filial> traerFiliales() throws NumberFormatException, SQLException {
 		
 		List<Filial> lstFilial = new ArrayList<Filial>();
@@ -35,6 +36,7 @@ public class FilialDao {
 		return lstFilial;	
 	}
 	
+	//Funcion para convertir el INT del día de Mantenimiento en String con el día
 	public String traerDiaMantenimiento(String dia) {
 		int diaInt = Integer.parseInt(dia);
 		String mantenimiento = null;
@@ -50,6 +52,16 @@ public class FilialDao {
 		}
 		
 		return mantenimiento;
+	}
+	
+	//Modificar Filial
+	public void modFilial(int id, String desde, String hasta, int mantenimiento) {
+		this.ds.ejecutarConsultar("CALL modFilial("+id+",'"+desde+"','"+hasta+"',"+mantenimiento+");");
+	}
+	
+	//Alta Filial
+	public void altaFilial(String localidad, String desde, String hasta, int mantenimiento) {
+		this.ds.ejecutarConsultar("CALL altaFilial('"+localidad+"','"+desde+"','"+hasta+"',"+mantenimiento+");");
 	}
 	
 }
