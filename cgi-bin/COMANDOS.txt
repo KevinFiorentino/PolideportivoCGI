@@ -1,0 +1,14 @@
+Comandos JAVA con el classpath correspondiente:
+
+
+java -classpath odbc.jar;gson.jar -jar TraerFiliales.jar
+
+java -classpath odbc.jar;gson.jar -jar TraerTurnos.jar
+
+java -classpath odbc.jar -jar LogearUsuario.jar
+
+java -classpath odbc.jar -jar ModFilial.jar
+
+java -classpath odbc.jar -jar AltaFilial.jar
+
+java -classpath odbc.jar -jar DelTurno.jar
